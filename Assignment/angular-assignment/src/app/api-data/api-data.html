@@ -1,0 +1,64 @@
+<div class="card">
+  <h1>API Data Display</h1>
+  <p>This page demonstrates consuming data from the JSONPlaceholder API using Angular's HttpClient.</p>
+  
+  <div class="tab-buttons">
+    <button 
+      class="btn tab-btn" 
+      [class.active]="selectedTab === 'posts'"
+      (click)="loadPosts()">
+      Posts
+    </button>
+    <button 
+      class="btn tab-btn" 
+      [class.active]="selectedTab === 'users'"
+      (click)="loadUsers()">
+      Users
+    </button>
+  </div>
+
+  <div *ngIf="loading" class="loading">
+    <p>Loading data...</p>
+  </div>
+
+  <div *ngIf="error" class="error">
+    <p>{{ error }}</p>
+  </div>
+
+  <!-- Posts Display -->
+  <div *ngIf="selectedTab === 'posts' && !loading" class="data-container">
+    <h2>Recent Posts</h2>
+    <div *ngIf="posts.length > 0" class="posts-grid">
+      <div *ngFor="let post of posts" class="post-card">
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.body }}</p>
+        <div class="post-meta">
+          <span>Post ID: {{ post.id }}</span>
+          <span>User ID: {{ post.userId }}</span>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="posts.length === 0" class="no-data">
+      <p>No posts available.</p>
+    </div>
+  </div>
+
+  <!-- Users Display -->
+  <div *ngIf="selectedTab === 'users' && !loading" class="data-container">
+    <h2>Users</h2>
+    <div *ngIf="users.length > 0" class="users-grid">
+      <div *ngFor="let user of users" class="user-card">
+        <h3>{{ user.name }}</h3>
+        <div class="user-details">
+          <p><strong>Email:</strong> {{ user.email }}</p>
+          <p><strong>Phone:</strong> {{ user.phone }}</p>
+          <p><strong>Website:</strong> {{ user.website }}</p>
+          <p><strong>Company:</strong> {{ user.company.name }}</p>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="users.length === 0" class="no-data">
+      <p>No users available.</p>
+    </div>
+  </div>
+</div>

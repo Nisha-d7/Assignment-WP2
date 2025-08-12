@@ -1,0 +1,22 @@
+<!-- Navigation Bar -->
+<nav class="navbar">
+  <div class="nav-container">
+    <h1 class="nav-title">Angular Assignment</h1>
+    <ul class="nav-menu">
+      <li class="nav-item">
+        <a routerLink="/home" routerLinkActive="active" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/api-data" routerLinkActive="active" class="nav-link">API Data</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="/contact" routerLinkActive="active" class="nav-link">Contact Form</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Router Outlet for Component Content -->
+<main class="main-content">
+  <router-outlet></router-outlet>
+</main>
